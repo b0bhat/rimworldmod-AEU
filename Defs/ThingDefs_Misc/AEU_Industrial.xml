@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Shoulder Rocket Launcher -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>AEUI_ShoulderRocketLauncher</defName>
+    <label>shoulder rocket launcher</label>
+    <description>An reloadable rocket launcher mounted on the shoulder and capable of unleashing three tiny rockets onto the battlefield. The rockets only create small explosions but can be deadly to single targets. 3 limited uses, refuel with steel (15 per use).</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+			<texPath>Apparel/ShoulderRocketLauncher</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Attack</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>22000</WorkToMake>
+			<Mass>12.5</Mass>
+			<Flammability>0</Flammability>
+      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+		<costList>
+			<Plasteel>20</Plasteel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <Steel>150</Steel>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+      <li>TableMachining</li>
+			</recipeUsers>
+      <researchPrerequisite>MultibarrelWeapons</researchPrerequisite>
+		</recipeMaker>
+
+    <comps>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>3</maxCharges>
+				<ammoDef>Steel</ammoDef>
+				<ammoCountPerCharge>15</ammoCountPerCharge>
+				<baseReloadTicks>360</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>Rocket</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+
+		<verbs>
+      <li>
+				<label>fire rockets</label>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>AEU_Rocket</defaultProjectile>
+				<range>31.9</range>
+        <minRange>3.9</minRange>
+        <forcedMissRadius>0.9</forcedMissRadius>
+				<warmupTime>1.5</warmupTime>
+        <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+        <muzzleFlashScale>14</muzzleFlashScale>
+				<soundCast>InfernoCannon_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+
+  <!-- Bullet -->
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>AEU_Rocket</defName>
+		<label>rocket</label>
+		<graphicData>
+			<texPath>Projectile/TripleRocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+      <flyOverhead>false</flyOverhead>
+      <explosionRadius>1.9</explosionRadius>
+      <damageDef>Bomb</damageDef>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+      <damageAmountBase>28</damageAmountBase>
+      <speed>55</speed>
+      <explosionDelay>0</explosionDelay>
+      <arcHeightFactor>0</arcHeightFactor>
+      <shadowSize>0.2</shadowSize>
+		</projectile>
+	</ThingDef>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                              <!-- Collapsable Mortar -->
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <ThingDef ParentName="ApparelMakeableBase">
+      <defName>AEUI_CollapsableMortar</defName>
+      <label>collapsable mortar</label>
+      <description>A light mortar, basically a metal tube with an adjustable stand. Can be carried into battle to launch a high explosive mortar shell. However, range is reduced due to the smaller design. Can still fire over walls. 1 limited use, refuel with high explosive shells (1 per use).
+</description>
+      <techLevel>Industrial</techLevel>
+      <graphicData>
+  			<texPath>Apparel/CollapsableMortar</texPath>
+  			<graphicClass>Graphic_Single</graphicClass>
+  		</graphicData>
+      <soundInteract>Interact_Rifle</soundInteract>
+  		<generateCommonality>0.3</generateCommonality>
+
+  		<thingCategories>
+  			<li>ApparelUtility</li>
+  		</thingCategories>
+
+  		<apparel>
+  			<careIfWornByCorpse>false</careIfWornByCorpse>
+  			<careIfDamaged>false</careIfDamaged>
+  			<bodyPartGroups>
+  				<li>Torso</li>
+  			</bodyPartGroups>
+  			<layers>
+  				<li>Belt</li>
+  			</layers>
+  			<tags>
+  				<li>AEU_Attack</li>
+  			</tags>
+  		</apparel>
+
+  		<statBases>
+  			<WorkToMake>23000</WorkToMake>
+  			<Mass>9</Mass>
+  			<Flammability>0.5</Flammability>
+        <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+  			<EquipDelay>1</EquipDelay>
+  		</statBases>
+
+      <equippedStatOffsets>
+          <MoveSpeed>-0.6</MoveSpeed>
+      </equippedStatOffsets>
+
+  		<costList>
+        <ComponentIndustrial>5</ComponentIndustrial>
+        <Steel>200</Steel>
+  		</costList>
+  		<smeltable>false</smeltable>
+  		<recipeMaker>
+  		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+  			<workSkill>Crafting</workSkill>
+  			<effectWorking>Smith</effectWorking>
+  			<soundWorking>Recipe_Smith</soundWorking>
+  			<skillRequirements>
+  				<Crafting>6</Crafting>
+  			</skillRequirements>
+        <recipeUsers>
+        <li>TableMachining</li>
+  			</recipeUsers>
+        <researchPrerequisite>Mortars</researchPrerequisite>
+  		</recipeMaker>
+
+      <comps>
+  			<li Class="CompProperties_Reloadable">
+  				<maxCharges>1</maxCharges>
+  				<ammoDef>Shell_HighExplosive</ammoDef>
+  				<ammoCountPerCharge>1</ammoCountPerCharge>
+  				<baseReloadTicks>360</baseReloadTicks>
+  				<soundReload>Standard_Reload</soundReload>
+  				<hotKey>Misc4</hotKey>
+  				<chargeNoun>High Explosive Shell</chargeNoun>
+  				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+  			</li>
+        <li Class="CompProperties_Explosive">
+          <explosiveRadius>3.5</explosiveRadius>
+          <explosiveDamageType>Bomb</explosiveDamageType>
+          <requiredDamageTypeToExplode>Flame</requiredDamageTypeToExplode>
+        </li>
+  		</comps>
+
+  		<verbs>
+        <li>
+  				<label>launch mortar</label>
+  				<verbClass>Verb_Shoot</verbClass>
+  				<hasStandardCommand>true</hasStandardCommand>
+  				<onlyManualCast>True</onlyManualCast>
+          <defaultProjectile>AEU_MortarShell</defaultProjectile>
+  				<range>59.9</range>
+          <minRange>19.9</minRange>
+          <forcedMissRadius>5.9</forcedMissRadius>
+  				<warmupTime>3.5</warmupTime>
+          <muzzleFlashScale>14</muzzleFlashScale>
+  				<soundCast>Mortar_LaunchA</soundCast>
+          <soundCastTail>GunTail_Heavy</soundCastTail>
+          <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+          <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+          <targetParams>
+            <canTargetLocations>true</canTargetLocations>
+          </targetParams>
+  			</li>
+  		</verbs>
+  	</ThingDef>
+
+    <!-- Bullet -->
+
+  	<ThingDef ParentName="BaseBullet">
+  		<defName>AEU_MortarShell</defName>
+  		<label>mortar shell</label>
+  		<graphicData>
+  			<texPath>Projectile/Bullet_PortableMortar</texPath>
+  			<graphicClass>Graphic_Single</graphicClass>
+        <shaderType>TransparentPostLight</shaderType>
+  		</graphicData>
+      <thingClass>Projectile_Explosive</thingClass>
+  		<projectile>
+        <flyOverhead>true</flyOverhead>
+        <explosionRadius>3.2</explosionRadius>
+        <damageDef>Bomb</damageDef>
+        <ai_IsIncendiary>false</ai_IsIncendiary>
+        <damageAmountBase>40</damageAmountBase>
+        <speed>35</speed>
+        <explosionDelay>0</explosionDelay>
+        <arcHeightFactor>1.2</arcHeightFactor>
+        <shadowSize>0.5</shadowSize>
+  		</projectile>
+  	</ThingDef>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                              <!-- Riot Control Gear -->
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <ThingDef ParentName="ApparelMakeableBase">
+      <defName>AEUM_RiotControlGear</defName>
+      <label>riot control gear</label>
+      <description>With a taser, pepper spray and megaphone, a guard can better subdue prisoners. Can be used to stun a single enemy at short range quickly. Also increases arrest chance. Unlimited use. 20 limited uses, refuel with steel (1 per use)</description>
+      <techLevel>Industrial</techLevel>
+      <graphicData>
+  			<texPath>Apparel/RiotControlGear</texPath>
+  			<graphicClass>Graphic_Single</graphicClass>
+  		</graphicData>
+      <soundInteract>Interact_Rifle</soundInteract>
+  		<generateCommonality>0.3</generateCommonality>
+
+  		<thingCategories>
+  			<li>ApparelUtility</li>
+  		</thingCategories>
+
+  		<apparel>
+  			<careIfWornByCorpse>false</careIfWornByCorpse>
+  			<careIfDamaged>false</careIfDamaged>
+  			<bodyPartGroups>
+  				<li>Torso</li>
+  			</bodyPartGroups>
+  			<layers>
+  				<li>Belt</li>
+  			</layers>
+  			<tags>
+  				<li>AEU_Attack</li>
+  			</tags>
+  		</apparel>
+
+  		<statBases>
+  			<WorkToMake>20000</WorkToMake>
+  			<Mass>3</Mass>
+  			<Flammability>0</Flammability>
+        <AccuracyTouch>0.95</AccuracyTouch>
+        <AccuracyShort>0.88</AccuracyShort>
+        <AccuracyMedium>0.80</AccuracyMedium>
+        <AccuracyLong>0.65</AccuracyLong>
+        <RangedWeapon_Cooldown>0.4</RangedWeapon_Cooldown>
+  			<EquipDelay>1</EquipDelay>
+  		</statBases>
+
+      <equippedStatOffsets>
+          <ArrestSuccessChance>0.8</ArrestSucessChance>
+      </equippedStatOffsets>
+
+  		<costList>
+  			<ComponentIndustrial>6</ComponentIndustrial>
+        <Steel>45</Steel>
+  		</costList>
+  		<smeltable>false</smeltable>
+  		<recipeMaker>
+  		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+  			<workSkill>Crafting</workSkill>
+  			<effectWorking>Smith</effectWorking>
+  			<soundWorking>Recipe_Smith</soundWorking>
+  			<skillRequirements>
+  				<Crafting>6</Crafting>
+  			</skillRequirements>
+        <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+  			</recipeUsers>
+        <researchPrerequisite>MicroelectronicsBasics</researchPrerequisite>
+  		</recipeMaker>
+
+      <comps>
+  			<li Class="CompProperties_Reloadable">
+  				<maxCharges>20</maxCharges>
+  				<ammoDef>Steel</ammoDef>
+  				<ammoCountPerCharge>1</ammoCountPerCharge>
+  				<baseReloadTicks>360</baseReloadTicks>
+  				<soundReload>Standard_Reload</soundReload>
+  				<hotKey>Misc4</hotKey>
+  				<chargeNoun>Taser</chargeNoun>
+  				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+  			</li>
+  		</comps>
+
+  		<verbs>
+  			<li>
+  				<label>fire taser</label>
+  				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+  				<hasStandardCommand>true</hasStandardCommand>
+  				<onlyManualCast>True</onlyManualCast>
+          <defaultProjectile>AEU_Taser</defaultProjectile>
+  				<range>11.9</range>
+  				<warmupTime>0.8</warmupTime>
+  				<soundCast>Shot_ChargeRifle</soundCast>
+  				<muzzleFlashScale>0</muzzleFlashScale>
+          <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+          <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+          <targetParams>
+            <canTargetLocations>false</canTargetLocations>
+          </targetParams>
+          <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+  			</li>
+  		</verbs>
+  	</ThingDef>
+
+    <!-- Bullet -->
+
+  	<ThingDef ParentName="BaseBullet">
+  		<defName>AEU_Taser</defName>
+  		<label>taser bolt</label>
+  		<graphicData>
+  			<texPath>Projectile/TaserBolt</texPath>
+  			<graphicClass>Graphic_Single</graphicClass>
+  		</graphicData>
+  		<projectile>
+  			<speed>60</speed>
+  			<damageDef>Stun</damageDef>
+  			<damageAmountBase>40</damageAmountBase>
+        <armorPenetrationBase>0.3</armorPenetrationBase>
+  		</projectile>
+  	</ThingDef>
+
+</Defs>

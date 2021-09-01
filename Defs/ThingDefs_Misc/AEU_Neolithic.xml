@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Tomahawk -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>AEUN_Tomahawk</defName>
+    <label>tomahawk</label>
+    <description>A light axe, made from stone and balanced for throwing with one hand. Deals heavy damage but has a short range. 20 limited uses, refuel with wood (1 per use).</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/Tomahawk</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Attack</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>14000</WorkToMake>
+			<Mass>2.5</Mass>
+			<Flammability>0</Flammability>
+      <AccuracyTouch>0.8</AccuracyTouch>
+      <AccuracyShort>0.62</AccuracyShort>
+      <AccuracyMedium>0.30</AccuracyMedium>
+      <AccuracyLong>0.05</AccuracyLong>
+      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
+    <costStuffCount>20</costStuffCount>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>4</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+
+    <comps>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>10</maxCharges>
+				<ammoDef>WoodLog</ammoDef>
+				<ammoCountPerCharge>1</ammoCountPerCharge>
+				<baseReloadTicks>360</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>Tomahawk</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+
+		<verbs>
+			<li>
+				<label>throw tomahawk</label>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>AEU_TomahawkThrown</defaultProjectile>
+				<range>7.9</range>
+				<warmupTime>0.5</warmupTime>
+				<soundCast>ThrowGrenade</soundCast>
+				<muzzleFlashScale>0</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+			</li>
+		</verbs>
+	</ThingDef>
+
+  <!-- Bullet -->
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>AEU_TomahawkThrown</defName>
+		<label>thrown tomahawk</label>
+		<graphicData>
+			<texPath>Apparel/Tomahawk</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<speed>25</speed>
+			<damageDef>Cut</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.2</armorPenetrationBase>
+      <stoppingPower>2</stoppingPower>
+		</projectile>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Blowgun -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>AEUN_Blowgun</defName>
+    <label>blowgun</label>
+    <description>With an assortment of darts that are tipped with natural toxic substances harvested from plants, the blowgun can stagger animals or humans for several seconds, and deal piercing damage. 5 limited uses, refuel with wood (3 per use).</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/Blowgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Attack</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>16000</WorkToMake>
+			<Mass>2</Mass>
+			<Flammability>0.4</Flammability>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.78</AccuracyShort>
+      <AccuracyMedium>0.54</AccuracyMedium>
+      <AccuracyLong>0.22</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+		<costList>
+			<WoodLog>35</WoodLog>
+      <Cloth>5</Cloth>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+
+    <comps>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>5</maxCharges>
+				<ammoDef>WoodLog</ammoDef>
+				<ammoCountPerCharge>3</ammoCountPerCharge>
+				<baseReloadTicks>360</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>Dart</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+
+		<verbs>
+			<li>
+				<label>shoot dart</label>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>AEU_Dart</defaultProjectile>
+				<range>19.9</range>
+				<warmupTime>1.2</warmupTime>
+				<soundCast>ThrowGrenade</soundCast>
+				<muzzleFlashScale>0</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+			</li>
+		</verbs>
+	</ThingDef>
+
+  <!-- Bullet -->
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>AEU_Dart</defName>
+		<label>dart</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Arrow</damageDef>
+      <armorPenetrationBase>0.2</armorPenetrationBase>
+			<damageAmountBase>5</damageAmountBase>
+      <stoppingPower>8</stoppingPower>
+		</projectile>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Psychite Concentrates -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_PsychiteConcentrates</defName>
+    <label>psychite concentrates</label>
+    <description>After boiling psychite tea in a complex process, a fine brown powder is left over with a much higher concentration. The powder makes it easy and quick to ingest, relaxing the user in everyday activities.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/PsychiteConcentrates</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>16000</WorkToMake>
+			<Mass>0.5</Mass>
+			<Flammability>0.3</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+    </equippedStatOffsets>
+
+		<costList>
+			<PsychiteTea>3</PsychiteTea>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>3</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+      <researchPrerequisite>PsychoidBrewing</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Stone Tools -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_StoneTools</defName>
+    <label>stone tools</label>
+    <description>Primitive tools made from stone and bound together with straw or rope. Improves work speed in a whole range of different activities, such as general labour and mining.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/StoneTools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>18000</WorkToMake>
+			<Mass>6</Mass>
+			<Flammability>0.3</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <MiningSpeed>0.1</MiningSpeed>
+    </equippedStatOffsets>
+
+		<costList>
+			<WoodLog>40</WoodLog>
+		</costList>
+    <costStuffCount>50</costStuffCount>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>4</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Pemmican Pouch -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_PemmicanPouch</defName>
+    <label>pemmican pouch</label>
+    <description>A small pouch made from leather which contains little morsels of pemmican. Warriors and workers alike can grab a quick snack every now and then, lowering overall hunger rate by a little.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/PemmicanPouch</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>12000</WorkToMake>
+			<Mass>4.5</Mass>
+			<Flammability>0.7</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <HungerRateMultiplier>-0.15</HungerRateMultiplier>
+    </equippedStatOffsets>
+
+		<costList>
+			<Pemmican>80</Pemmican>
+    </costList>
+      <costStuffCount>30</costStuffCount>
+  		<stuffCategories>
+  			<li>Leathery</li>
+        <li>Fabric</li>
+  		</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>2</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+      <researchPrerequisite>Pemmican</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Stone Charm -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_StoneCharm</defName>
+    <label>stone charm</label>
+    <description>These types of stone charms have been passed down through centuries as a tribal tradition. Slowly polished by hand, these stones take a while to craft. The gleaming purple stone reflects light in all the wrong ways, and sometimes one can hear voices. It mysteriously boosts psychic powers and sensitivity.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/StoneCharm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>15000</WorkToMake>
+			<Mass>1</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <PsychicSensitivity>0.8</PsychicSensitivity>
+    </equippedStatOffsets>
+
+		<costList>
+			<Jade>30</Jade>
+      <Gold>5</Gold>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Leather Bag -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_LeatherBag</defName>
+    <label>leather bag</label>
+    <description>A bag sown from animal leather which increases carrying capacity. Useful for haulers and gatherers.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/LeatherBag</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>15000</WorkToMake>
+			<Mass>4</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <CarryingCapacity>35</CarryingCapacity>
+    </equippedStatOffsets>
+
+    <costStuffCount>60</costStuffCount>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Animal Treats -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_AnimalTreats</defName>
+    <label>animal treats</label>
+    <description>Small treats made from kibble with dried smokeleaf mixed inside. Smokeleaf content is low enough that animals do not gain health effects. Animal trainers can carry these alongside normal food to improve their taming and training chances.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/AnimalTreats</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>10000</WorkToMake>
+			<Mass>1.3</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <TameAnimalChance>0.1</TameAnimalChance>
+        <TrainAnimalChance>0.1</TrainAnimalChance>
+    </equippedStatOffsets>
+
+    <costList>
+			<Kibble>30</Kibble>
+      <SmokeleafLeaves>5</SmokeleafLeaves>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>3</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Seed Pouches -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUN_SeedPouches</defName>
+    <label>seed pouches</label>
+    <description>Small pouches attached to a belt gives a farmer easy access to seeds when sowing. Improves plant work speed.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/SeedPouches</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>12000</WorkToMake>
+			<Mass>1.8</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <PlantWorkSpeed>0.2</PlantWorkSpeed>
+    </equippedStatOffsets>
+
+    <costStuffCount>25</costStuffCount>
+  	<stuffCategories>
+  		<li>Leathery</li>
+  	</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>3</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Leather Sheathing -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>AEUN_LeatherSheathing</defName>
+    <label>leather sheathing</label>
+    <description>Made from layers of pressed leather stitched together, these leather plates can be attached to existing armor, boosting its strength against sharp attacks. Light enough to run around in, and provides no insulation. Cannot be worn with shield belts.</description>
+    <techLevel>Neolithic</techLevel>
+    <graphicData>
+			<texPath>Apparel/LeatherSheathing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+        <li>Waist</li>
+        <li>Legs</li>
+        <li>Arms</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>3</EquipDelay>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+		</statBases>
+
+    <equippedStatOffsets>
+        <MoveSpeed>-0.1</MoveSpeed>
+    </equippedStatOffsets>
+
+    <costList>
+			<Silver>30</Silver>
+    </costList>
+    <costStuffCount>70</costStuffCount>
+  	<stuffCategories>
+  		<li>Leathery</li>
+  	</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+</Defs>

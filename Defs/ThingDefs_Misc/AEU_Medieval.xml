@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Light Spear -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>AEUM_LightSpear</defName>
+    <label>light spear</label>
+    <description>A small spear which can be strapped to the back of a foot soldier and thrown as an opening attack. The spear can be thrown quite far, but deals mediocre damage due to its low weight. 15 limited uses, refuel with steel (3 per use).</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/LightSpear</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Attack</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>14000</WorkToMake>
+			<Mass>4.5</Mass>
+			<Flammability>0</Flammability>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.74</AccuracyShort>
+      <AccuracyMedium>0.62</AccuracyMedium>
+      <AccuracyLong>0.48</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+		<costList>
+			<WoodLog>50</WoodLog>
+      <Steel>35</Steel>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+      <li>FueledSmithy</li>
+      <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+		</recipeMaker>
+
+    <comps>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>15</maxCharges>
+				<ammoDef>Steel</ammoDef>
+				<ammoCountPerCharge>3</ammoCountPerCharge>
+				<baseReloadTicks>360</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>Spear</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+		</comps>
+
+		<verbs>
+			<li>
+				<label>throw spear</label>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>AEU_SpearThrown</defaultProjectile>
+				<range>24.9</range>
+				<warmupTime>0.8</warmupTime>
+				<soundCast>ThrowGrenade</soundCast>
+				<muzzleFlashScale>0</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+			</li>
+		</verbs>
+	</ThingDef>
+
+  <!-- Bullet -->
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>AEU_SpearThrown</defName>
+		<label>thrown spear</label>
+		<graphicData>
+			<texPath>Projectile/LightSpear</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<speed>35</speed>
+			<damageDef>Stab</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+      <armorPenetrationBase>0.3</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Boomalope Bomb -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>AEUM_BoomalopeBomb</defName>
+    <label>boomalope bomb</label>
+    <description>By attaching empty boomalope sacs to a steel ball and filling them with chemfuel, an improvised explosive is created. Does low damage but sprays fire and chemfuel everywhere on detonation. 1 limited use, refuel with chemfuel (30 per use).</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/BoomalopeBomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+    <tickerType>Normal</tickerType>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Attack</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>18000</WorkToMake>
+			<Mass>8</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+		<costList>
+			<Chemfuel>30</Chemfuel>
+      <Steel>35</Steel>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+      <li>FueledSmithy</li>
+      <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>Smithing</researchPrerequisite>
+		</recipeMaker>
+
+    <comps>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>1</maxCharges>
+				<ammoDef>Chemfuel</ammoDef>
+				<ammoCountPerCharge>30</ammoCountPerCharge>
+				<baseReloadTicks>360</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>Chemfuel</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+			</li>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3.5</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <requiredDamageTypeToExplode>Flame</requiredDamageTypeToExplode>
+      </li>
+		</comps>
+
+		<verbs>
+			<li>
+				<label>lob bomb</label>
+				<verbClass>Verb_LaunchProjectileStatic</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+        <defaultProjectile>AEU_BombThrown</defaultProjectile>
+				<range>17.9</range>
+        <forcedMissRadius>2.9</forcedMissRadius>
+				<warmupTime>2</warmupTime>
+        <noiseRadius>4</noiseRadius>
+				<soundCast>ThrowGrenade</soundCast>
+				<muzzleFlashScale>0</muzzleFlashScale>
+        <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+			</li>
+		</verbs>
+	</ThingDef>
+
+  <!-- Bullet -->
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>AEU_BombThrown</defName>
+		<label>thrown boomalope bomb</label>
+		<graphicData>
+			<texPath>Projectile/BoomalopeBomb</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.4</preExplosionSpawnChance>
+      <explosionRadius>3.9</explosionRadius>
+      <damageDef>Flame</damageDef>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+      <damageAmountBase>4</damageAmountBase>
+      <speed>10</speed>
+      <explosionDelay>100</explosionDelay>
+      <arcHeightFactor>2.5</arcHeightFactor>
+      <shadowSize>0.8</shadowSize>
+    </projectile>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Scythe and Sickle -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUM_ScytheAndSickle</defName>
+    <label>scythe and sickle</label>
+    <description>Two curved metal blades with a sharp edge and different lengths, perfect for cutting crops. Improves harvest yield and speed.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/ScytheAndSickle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>18000</WorkToMake>
+			<Mass>5</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <PlantHarvestYield>0.2</PlantHarvestYield>
+        <PlantWorkSpeed>0.05</PlantWorkSpeed>
+    </equippedStatOffsets>
+
+    <costList>
+			<WoodLog>35</WoodLog>
+      <Steel>45</Steel>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>Smithing</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Ammo Quiver -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUM_AmmoQuiver</defName>
+    <label>ammo quiver</label>
+    <description>A quiver made from leather which an archer can use to access ammunition faster and easier.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/AmmoQuiver</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>14000</WorkToMake>
+			<Mass>3.5</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <AimingDelayFactor>-0.1</AimingDelayFactor>
+    </equippedStatOffsets>
+
+    <costList>
+      <Steel>15</Steel>
+		</costList>
+    <costStuffCount>30</costStuffCount>
+  	<stuffCategories>
+  		<li>Leathery</li>
+  	</stuffCategories>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>Greatbow</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Mining Tools -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUM_MiningTools</defName>
+    <label>mining tools</label>
+    <description>Various tools made from metals such as a pickaxe, shovel, hammer, and chisel which increase a user’s mining speed and yield.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/MiningTools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>16000</WorkToMake>
+			<Mass>7.2</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <MiningSpeed>0.1</MiningSpeed>
+        <MiningYield>0.1</MiningYield>
+    </equippedStatOffsets>
+
+    <costList>
+      <Steel>80</Steel>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>Smithing</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Compact Wheelbarrow -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUM_CompactWheelbarrow</defName>
+    <label>compact wheelbarrow</label>
+    <description>A light wheelbarrow that can be folded and used at all times, increases carry capacity substantially and lightens the load on the user, increasing move speed. However, the wheelbarrow can be cumbersome at times, especially in combat.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/CompactWheelbarrow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>24000</WorkToMake>
+			<Mass>10.5</Mass>
+			<Flammability>0.8</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <CarryingCapacity>125</CarryingCapacity>
+        <MoveSpeed>0.3</MoveSpeed>
+        <WorkSpeedGlobal>-0.3</WorkSpeedGlobal>
+        <MeleeHitChance>-3</MeleeHitChance>
+        <MeleeDodgeChance>-6</MeleeDodgeChance>
+    </equippedStatOffsets>
+
+    <costList>
+      <Steel>50</Steel>
+      <WoodLog>80</WoodLog>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>ComplexFurniture</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Writing Pad and Quill -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUM_WritingPadAndQuill</defName>
+    <label>writing pad and quill</label>
+    <description>Painstakingly made by hand, this includes ink, a quill and a small pad for writing notes and information. Increases a user’s research and learning speed and is inexpensive, but takes a lot of work to make.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/WritingPadAndQuill</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Stat</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>26000</WorkToMake>
+			<Mass>2.5</Mass>
+			<Flammability>0.9</Flammability>
+			<EquipDelay>1</EquipDelay>
+		</statBases>
+
+    <equippedStatOffsets>
+        <GlobalLearningFactor>0.1</GlobalLearningFactor>
+        <ResearchSpeedFactor>0.15</ResearchSpeedFactor>
+    </equippedStatOffsets>
+
+    <costList>
+      <WoodLog>30</WoodLog>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>Smithing</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+                            <!-- Heavy Steel Plating -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>AEUM_HeavySteelPlating</defName>
+    <label>heavy steel plating</label>
+    <description>This fine armor made from metal alloys grants high blunt defense and some sharp defense. Knights can attach these to reinforce existing armor and grant them a defensive edge in battle. However, the additional weight will also slow down the user and reduce work speed. Cannot be worn with shield belts.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+			<texPath>Apparel/HeavySteelPlating</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<generateCommonality>0.3</generateCommonality>
+
+		<thingCategories>
+			<li>ApparelUtility</li>
+		</thingCategories>
+
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<bodyPartGroups>
+        <li>Torso</li>
+        <li>Waist</li>
+        <li>Legs</li>
+        <li>Arms</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>AEU_Defense</li>
+			</tags>
+		</apparel>
+
+		<statBases>
+			<WorkToMake>18000</WorkToMake>
+			<Mass>8.5</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>3</EquipDelay>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+			<ArmorRating_Blunt>0.8</ArmorRating_Blunt>
+			<ArmorRating_Heat>0.1</ArmorRating_Heat>
+		</statBases>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.4</MoveSpeed>
+      <WorkSpeedGlobal>-0.1</WorkSpeedGlobal>
+    </equippedStatOffsets>
+
+    <costList>
+      <Steel>90</Steel>
+		</costList>
+		<smeltable>false</smeltable>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+      <recipeUsers>
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+			</recipeUsers>
+      <researchPrerequisite>PlateArmor</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+</Defs>
